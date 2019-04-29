@@ -62,3 +62,7 @@ typings/
 # next.js build output
 .next
 
+/node_modules/
+/.idea/workspace.xml
+.DS_Store
+
