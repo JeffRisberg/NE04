@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require('bcrypt')
 
 const User = require("../models/User")
+//const Charity = require("../models/Charity")
 users.use(cors())
 
 process.env.SECRET_KEY = 'secret'
@@ -18,6 +19,8 @@ users.post('/register', (req, res) => {
       password: req.body.password,
       created: today
    }
+
+   console.log(userData);
 
    User.findOne({
       where: {
@@ -52,6 +55,8 @@ users.post('/login', (req, res) => {
       }
    })
       .then(user => {
+         console.log(user);
+         
          if (user) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
                let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
@@ -68,4 +73,4 @@ users.post('/login', (req, res) => {
       })
 })
 
-module.exports = users
+module.exports = users;

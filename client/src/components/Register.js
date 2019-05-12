@@ -20,14 +20,16 @@ class Register extends Component {
     }
 
     onSubmit (e) {
-        e.preventDefault()
+        e.preventDefault();
 
         const user = {
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             email: this.state.email,
             password: this.state.password
-        }
+        };
+
+        console.log(user);
 
         register(user).then(res => {
             this.props.history.push(`/login`)
