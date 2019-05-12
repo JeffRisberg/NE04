@@ -11,7 +11,7 @@ const sequelize = new Sequelize("ne04", "developer", "123456", {
         acquire: 30000,
         idle: 10000
     }
-})
+});
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

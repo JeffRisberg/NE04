@@ -8,10 +8,11 @@ const User = require("../models/User")
 //const Charity = require("../models/Charity")
 users.use(cors())
 
-process.env.SECRET_KEY = 'secret'
+process.env.SECRET_KEY = 'secret';
 
 users.post('/register', (req, res) => {
-   const today = new Date()
+   const today = new Date();
+
    const userData = {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
@@ -30,7 +31,7 @@ users.post('/register', (req, res) => {
       .then(user => {
          if (!user) {
             bcrypt.hash(req.body.password, 10, (err, hash) => {
-               userData.password = hash
+               userData.password = hash;
                User.create(userData)
                   .then(user => {
                      res.json({status: user.email + ' registered'})
@@ -56,7 +57,7 @@ users.post('/login', (req, res) => {
    })
       .then(user => {
          console.log(user);
-         
+
          if (user) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
                let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
