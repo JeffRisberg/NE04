@@ -10,14 +10,18 @@ charities.use(cors())
 process.env.SECRET_KEY = 'secret';
 
 charities.get('/', (req, res) => {
-   const charityData = {
-      id: req.body.id
-   };
+   Charity.findAll({
+   })
+      .then(charities => {
+         console.log(charities);
+         res.json(charities)
+      })
+});
 
-   console.log(charityData);
+charities.get('/:id', (req, res) => {
    Charity.findOne({
       where: {
-         id: req.body.id
+         id: req.params.id
       }
    })
       .then(charity => {
