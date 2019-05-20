@@ -34,19 +34,19 @@ charities.post('/', (req, res) => {
    const today = new Date();
 
    const charityData = {
+      id: req.body.id,
       name: req.body.name,
       description: req.body.description,
-      created: today
+      ein: req.body.ein,
+      date_created: today,
+      last_updated: today
    };
 
    console.log(charityData);
 
-   Charity.create({
-      where: {
-         email: req.body.email
-      }
-   })
+   Charity.create(charityData)
       .then(charity => {
+         res.json({status: 1})
       })
       .catch(err => {
          res.send('error: ' + err)
