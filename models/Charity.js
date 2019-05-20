@@ -18,10 +18,7 @@ module.exports = db.sequelize.define(
       ein: {
          type: Sequelize.STRING
       },
-      website: {
-         type: Sequelize.STRING
-      },
-      created: {
+      date_created: {
          type: Sequelize.DATE,
          defaultValue: Sequelize.NOW
       }

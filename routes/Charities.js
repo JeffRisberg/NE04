@@ -21,6 +21,7 @@ charities.get('/', (req, res) => {
       }
    })
       .then(charity => {
+         console.log(charity);
          res.json(charity)
       })
 });
